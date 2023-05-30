@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\View\Factory;
 //use Illuminate\Support\Facades\View;
+use App\Models\Tweet;
 
 
 class IndexController extends Controller
@@ -18,6 +19,9 @@ class IndexController extends Controller
     {
      //   return view('tweet.index', ['name' => 'laravel']);
      //   return View::make('tweet.index', ['name' => 'laravel']);
-       return $factory->make('tweet.index', ['name' => 'laravel']); //factory
+        $tweets = Tweet::all(); // DBの取得(all()で全て取得)
+//        dd($tweets);
+//        return view('tweet.index')->with('name', 'laravel')->with('version', '8');
+        return view('tweet.index')->with('tweets', $tweets)->with('name', 'END');
     }
 }
