@@ -20,9 +20,17 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Tweet whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tweet whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Tweet whereUpdatedAt($value)
+ * @property int $user_id
+ * @property-read \App\Models\User $user
+ * @method static \Illuminate\Database\Eloquent\Builder|Tweet whereUserId($value)
  * @mixin \Eloquent
  */
 class Tweet extends Model
 {
     use HasFactory;
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
 }

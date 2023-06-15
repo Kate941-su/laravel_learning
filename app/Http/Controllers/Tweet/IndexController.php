@@ -12,6 +12,7 @@ use Illuminate\View\Factory;
 //use Illuminate\Support\Facades\View;
 use App\Models\Tweet;
 
+use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class IndexController extends Controller
 {
