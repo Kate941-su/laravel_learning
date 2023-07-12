@@ -26,12 +26,10 @@ class IndexController extends Controller
         //   return view('tweet.index', ['name' => 'laravel']);
         //   return View::make('tweet.index', ['name' => 'laravel']);
         // 降順表示その１
-        // $tweets = Tweet::all(); // DBの取得(all()で全て取得)
+        $tweets = Tweet::all(); // DBの取得(all()で全て取得)
         // 降順表示その２
         // $tweets = Tweet::all()->sortByDesc('created_at');
-        $tweets = $tweetService->getTweets();
-        // dd($tweets);
-        // return view('tweet.index')->with('name', 'laravel')->with('version', '8');
+        //app(\App\Exceptions\Handler::class)->render(request(), throw new \Error('dump report.'));
         return view('tweet.index')->with('tweets', $tweets)->with('name', 'END');
     }
 }

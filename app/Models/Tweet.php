@@ -29,8 +29,14 @@ class Tweet extends Model
 {
     use HasFactory;
 
-    public function user() {
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(User::class);
+    }
+
+    public function images(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Image::class, 'tweet_images')->using(TweetImage::class);
     }
 
 }
