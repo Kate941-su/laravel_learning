@@ -21,15 +21,11 @@ class IndexController extends Controller
      */
 
     // TweetService $tweetServiceはServiceコンテナが自動的にクラスを判別し、$tweetServiceを注入した
-    public function __invoke(Request $request, Factory $factory, TweetService $tweetService)
+    public function __invoke(Request $request, Factory $factory, TweetService $tweetService): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        //   return view('tweet.index', ['name' => 'laravel']);
-        //   return View::make('tweet.index', ['name' => 'laravel']);
-        // 降順表示その１
-        $tweets = Tweet::all(); // DBの取得(all()で全て取得)
-        // 降順表示その２
-        // $tweets = Tweet::all()->sortByDesc('created_at');
-        //app(\App\Exceptions\Handler::class)->render(request(), throw new \Error('dump report.'));
+        $tweets = $tweetService->getTweets();
+//        dump($tweets);
+//        app(\App\Exceptions\Handler::class)->render(request(), throw new \Error('dump report.'));
         return view('tweet.index')->with('tweets', $tweets)->with('name', 'END');
     }
 }

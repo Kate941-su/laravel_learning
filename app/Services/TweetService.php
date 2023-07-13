@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class TweetService
 {
-    public function getTweets()
+    public function getTweets(): \Illuminate\Database\Eloquent\Collection|array
     {
         return Tweet::with('images')->orderBy('created_at', 'DESC')->get();
     }
