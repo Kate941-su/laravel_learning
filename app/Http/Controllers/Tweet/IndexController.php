@@ -24,7 +24,7 @@ class IndexController extends Controller
     public function __invoke(Request $request, Factory $factory, TweetService $tweetService): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $tweets = $tweetService->getTweets();
-//        dump($tweets);
+//        dd($tweets);
 //        app(\App\Exceptions\Handler::class)->render(request(), throw new \Error('dump report.'));
         return view('tweet.index')->with('tweets', $tweets)->with('name', 'END');
     }
